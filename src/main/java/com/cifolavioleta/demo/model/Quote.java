@@ -1,11 +1,25 @@
 package com.cifolavioleta.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "quote")
 public class Quote {
-		
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String tag;
 	private String sentence;
 	private int numberWords;
+	@ManyToOne
+	@JoinColumn(name = "book_id")
 	private Book book;
 		
 	public Quote() {

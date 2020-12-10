@@ -2,43 +2,46 @@ package com.cifolavioleta.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import java.util.ArrayList;
 import java.util.UUID;
 
+@Entity
+@Table(name = "book")
 public class Book {
+	@Id
     private final UUID id;
     @NotBlank
     private final String title;
-    // private ArrayList<Quote> quotes;
+    @OneToMany(mappedBy = "book")
+    private ArrayList<Quote> quotes;
 
     public Book(@JsonProperty("id") UUID id, @JsonProperty("title") String title) {
         this.id = id;
         this.title = title;
+        this.quotes = new ArrayList<>();
     }
 
     public UUID getId() {
         return this.id;
     }
 
-//    public void setId(UUID id) {
-//        this.id = id;
-//    }
-
     public String getTitle() {
         return this.title;
     }
 
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
+    public ArrayList<Quote> getQuotes() {
+        return this.quotes;
+    }
 
-//    public ArrayList<Quote> getQuotes() {
-//        return this.quotes;
-//    }
-
-//    public void setQuotes(ArrayList<Quotes> quotes) {
-//        this.quotes = quotes;
-//    }
+    public void setQuotes(ArrayList<Quote> quotes) {
+        this.quotes = quotes;
+    }
 
     @Override
     public String toString() {
