@@ -1,6 +1,5 @@
 package com.cifolavioleta.demo.dao;
 
-import com.cifolavioleta.demo.model.Book;
 import com.cifolavioleta.demo.model.Quote;
 
 import org.springframework.stereotype.Repository;
@@ -38,5 +37,4 @@ public class QuoteDataAccessService implements QuoteDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 }
