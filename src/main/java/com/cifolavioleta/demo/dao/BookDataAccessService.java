@@ -1,13 +1,14 @@
 package com.cifolavioleta.demo.dao;
 
 import com.cifolavioleta.demo.model.Book;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("postgresql")
+@Repository("H2")
 public class BookDataAccessService implements BookDAO{
     @Override
     public UUID insertBook(UUID id, Book book) {
@@ -21,7 +22,7 @@ public class BookDataAccessService implements BookDAO{
 
     @Override
     public List<Book> selectAllBooks() {
-        return List.of(new Book(UUID.randomUUID(), "From PostGreSQL-DB"));
+        return List.of(new Book(UUID.randomUUID(), "From H2-DB"));
     }
 
     @Override

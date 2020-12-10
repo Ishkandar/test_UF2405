@@ -15,7 +15,7 @@ public class BookService {
     private final BookDAO bookDao;
 
     @Autowired
-    public BookService(@Qualifier("postgresql") BookDAO bookDao) {
+    public BookService(@Qualifier("H2") BookDAO bookDao) {
         this.bookDao = bookDao;
     }
 

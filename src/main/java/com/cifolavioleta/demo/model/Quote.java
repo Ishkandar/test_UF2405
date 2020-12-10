@@ -1,5 +1,8 @@
 package com.cifolavioleta.demo.model;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,13 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "quote")
 public class Quote {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private UUID id;
 	private String tag;
 	private String sentence;
 	private int numberWords;
@@ -25,7 +30,7 @@ public class Quote {
 	public Quote() {
 		super();
 	}
-	public Quote(int id, String sentence, int numberWords, Book book) {
+	public Quote(UUID id, String sentence, int numberWords, Book book) {
 		super();
 		this.id = id;
 		this.sentence = sentence;
@@ -33,11 +38,17 @@ public class Quote {
 		this.book = book;
 	}
 	
-	public int getId() {
+    public Quote(@JsonProperty("id") UUID id, @JsonProperty("tag") String tag) {
+        super();
+    	this.id = id;
+        this.tag = tag;
+    }
+	
+	public UUID getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	
